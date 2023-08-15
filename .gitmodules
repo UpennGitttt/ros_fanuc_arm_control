@@ -1,0 +1,3 @@
+[submodule "ros_fanuc_arm_control"]
+	path = ros_fanuc_arm_control
+	url = https://github.com/UpennGitttt/ros_fanuc_arm_control.git
