@@ -1,0 +1,32 @@
+joint_traj_controller:
+  type: "effort_controllers/JointTrajectoryController"
+
+  joints:
+     - joint_1
+     - joint_2
+     - joint_3
+     - joint_4
+     - joint_5
+     - joint_6
+
+  gains:
+      joint_1: {p: 50000, d: 10, i: 1, i_clamp: 1}
+      joint_2: {p: 10000, d: 10, i: 1, i_clamp: 1}
+      joint_3: {p: 10000, d: 10, i: 1, i_clamp: 1}
+      joint_4: {p: 100, d: 1, i: 10, i_clamp: 1}
+      joint_5: {p: 100, d: 1, i: 10, i_clamp: 1}
+      joint_6: {p: 100, d: 1, i: 1, i_clamp: 1}
+
+  constraints:
+      goal_time: 0.5
+      stopped_velocity_tolerance: 0.02
+      joint_1: {trajectory: &trajectory_pos_constraint 0.05, goal:  &goal_pos_constraint 0.02}
+      joint_2: {trajectory: *trajectory_pos_constraint, goal: *goal_pos_constraint}
+      joint_3: {trajectory: *trajectory_pos_constraint, goal: *goal_pos_constraint}
+      joint_4: {trajectory: *trajectory_pos_constraint, goal: *goal_pos_constraint}
+      joint_5: {trajectory: *trajectory_pos_constraint, goal: *goal_pos_constraint}
+      joint_6: {trajectory: *trajectory_pos_constraint, goal: *goal_pos_constraint}
+
+  stop_trajectory_duration: 0
+  state_publish_rate:  25
+  action_monitor_rate: 30

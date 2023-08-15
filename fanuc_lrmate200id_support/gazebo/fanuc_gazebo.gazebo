@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="fanuc_gazebo" params="prefix robot_parameter_name">
+
+    <gazebo reference="${prefix}base_link">
+      <selfCollide>false</selfCollide>
+			<material>Gazebo/Black</material>
+		  <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_1">
+      <selfCollide>false</selfCollide>
+			<material>Gazebo/Yellow</material>
+		  <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_2">
+      <selfCollide>false</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_3">
+      <selfCollide>false</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_4">
+      <selfCollide>false</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${prefix}link_5">
+      <selfCollide>false</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+		<gazebo reference="${prefix}link_6">
+      <selfCollide>false</selfCollide>
+			<material>Gazebo/Orange</material>
+		  <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+
+		<gazebo reference="${prefix}friction_plate">
+     <material>Gazebo/Blue</material>
+		 <turnGravityOff>false</turnGravityOff>
+		 <mu1>10</mu1>
+     <mu2>10</mu2>
+		 <minDepth>0.003</minDepth>  
+		 <maxVel>0</maxVel>
+		 <kp>1000000.0</kp>
+  	 <kd>1.0</kd>
+    </gazebo>
+
+		<gazebo reference="${prefix}end_effector">
+		 <turnGravityOff>false</turnGravityOff>
+    </gazebo>
+
+		<gazebo>
+		  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+				<robotParam>${robot_parameter_name}</robotParam>
+		  </plugin>
+		</gazebo>
+		<!-- <gazebo>
+			<plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
+				<robotNamespace>gripper</robotNamespace>
+        <bodyName>${prefix}end_effector</bodyName>
+        <topicName>grasping</topicName>
+				<maxForce>0.001</maxForce>
+        <maxDistance>0.05</maxDistance>
+        <minDistance>0.01</minDistance>
+      </plugin>
+		</gazebo> -->
+
+  </xacro:macro>
+
+</robot>

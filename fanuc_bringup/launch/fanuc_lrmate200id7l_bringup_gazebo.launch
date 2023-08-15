@@ -1,0 +1,37 @@
+<launch>
+  <arg name="world" default="$(find fanuc_gazebo)/worlds/one_brick.world"/>
+  <arg name="x_pos" default="0"/>
+  <arg name="y_pos" default="0"/>
+  <arg name="z_pos" default="0"/>
+  
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world)"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  
+    <!-- Load the URDF into the ROS Parameter Server -->
+    <arg name="model" default="$(find xacro)/xacro  '$(find fanuc_lrmate200id_support)/urdf/lrmate200id7l.xacro'" />
+    <param name="robot_description" command="$(arg model)" />
+
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -model fanuc_lrmate200id7l -param robot_description
+          -x 0.0
+          -y 0.0
+          -z 0.05" />
+
+
+    <include file="$(find fanuc_lrmate200id7l_moveit_config)/launch/fanuc_lrmate200id7l_bringup_moveit.launch"/>
+
+
+  <arg name="rvizconfig" default="$(find fanuc_lrmate200id_support)/rviz/fanuc.rviz" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+
+</launch>

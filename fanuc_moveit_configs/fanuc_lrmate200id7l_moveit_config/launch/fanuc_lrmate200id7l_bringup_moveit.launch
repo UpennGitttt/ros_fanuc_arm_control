@@ -1,0 +1,10 @@
+<launch>
+    <!-- ros_control arm launch file -->
+    <include file="$(find fanuc_lrmate200id7l_moveit_config)/launch/fanuc_lrmate200id7l_gazebo_states.launch" />   
+
+    <!-- ros_control trajectory control dof arm launch file -->
+    <include file="$(find fanuc_lrmate200id7l_moveit_config)/launch/fanuc_lrmate200id7l_trajectory_controller.launch" />
+
+    <!-- moveit launch file -->
+    <include file="$(find fanuc_lrmate200id7l_moveit_config)/launch/moveit_planning_execution_gazebo.launch" />
+</launch>

@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="fanuc_plan" type="fanuc_pick_place" name="fanuc_project" output="screen" />
+</launch>

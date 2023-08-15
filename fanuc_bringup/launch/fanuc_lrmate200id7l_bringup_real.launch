@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find fanuc_lrmate200id7l_moveit_config)/launch/moveit_planning_execution.launch">
+    <arg name="sim" value="false"/>
+    <arg name="robot_ip" value="192.168.1.107"/>
+  </include>
+</launch>
