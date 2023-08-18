@@ -1,5 +1,5 @@
 ## Project Overview:
-Control and visualize the real fanuc lrmate200id7l robot arm. 
+Control and visualize the real fanuc lrmate200id7l robot arm. A sample code for pick up and place was provided.
 
 ## Installtion
 1. mkdir -p your_workspace/src 
